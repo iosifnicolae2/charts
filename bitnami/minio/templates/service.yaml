@@ -4,6 +4,7 @@ metadata:
   name: {{ include "minio.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels: {{- include "minio.labels" . | nindent 4 }}
+    "kubernetes.io/cluster-service": "true"
   {{- if .Values.service.annotations }}
   annotations: {{- include "minio.tplValue" ( dict "value" .Values.service.annotations "context" $) | nindent 4 }}
   {{- end }}
